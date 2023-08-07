@@ -55,7 +55,6 @@ def test_detailed_orders(db):
 
     # Check quantity of orders equal to 1
     assert len(orders) == 1
-
     # Check structure of data
     assert orders[0][0] == 1
     assert orders[0][1] == "Sergii"

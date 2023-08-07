@@ -17,18 +17,21 @@ class Database:
         sqlite_select_Query = "SELECT sqlite_version();"
         self.cursor.execute(sqlite_select_Query)
         record = self.cursor.fetchall()
+
         print(f"Connected successfully. SQLite Database Version is: {record}")
 
     def get_all_users(self):
         query = "SELECT name, address, city FROM customers"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+
         return record
 
     def get_user_address_by_name(self, name):
         query = f"SELECT address, city, postalCode, country FROM customers WHERE name = '{name}'"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+
         return record
 
     def update_product_qnt_by_id(self, product_id, qnt):
@@ -40,6 +43,7 @@ class Database:
         query = f"SELECT quantity FROM products WHERE id = {product_id}"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+
         return record
 
     def insert_product(self, product_id, name, description, qnt):
@@ -61,4 +65,5 @@ class Database:
             JOIN products ON orders.product_id = products.id"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
+
         return record
